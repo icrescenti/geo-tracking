@@ -19,8 +19,8 @@
       var crd = pos.coords;
       crd = [crd.latitude, crd.longitude]
       
-      if (coords.length < 1 || coords[coords.length-1] != crd)
-        coords.push(crd)
+      if (coords.length < 1 || (coords[coords.length-1][0] != crd[0] && coords[coords.length-1][1] != crd[1]))
+        coords.push(`[${crd}]`)
     };
 
     function error(err) {
