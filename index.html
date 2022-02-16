@@ -16,11 +16,15 @@
     };
 
     function success(pos) {
-      var crd = pos.coords;
-      crd = [crd.latitude, crd.longitude]
-      
-      if (coords.length < 1 || (coords[coords.length-1][0] != crd[0] && coords[coords.length-1][1] != crd[1]))
-        coords.push(`[${crd}]`)
+      var crd = [pos.coords.latitude, pos.coords.longitude]
+
+      if (
+          coords.length > 0 &&
+          coords[coords.length-1][0] == crd[0] &&
+          coords[coords.length-1][1] == crd[1]
+      ) return
+
+      coords.push(`[${crd}]`)
     };
 
     function error(err) {
