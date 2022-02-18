@@ -53,9 +53,9 @@ function postToApi(url, body) {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: body
+        body: JSON.stringify(body)
     })
-    .catch(err => console.log("Failed to post coordinates", body))
+    .catch(err => console.log("Failed to post coordinates"))
 }
 
 function saveTextAsFile(textToWrite, fileNameToSaveAs) {
