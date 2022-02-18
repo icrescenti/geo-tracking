@@ -29,11 +29,11 @@ function stopLiveTraking() {
 
 function getCoords(url) {
     setTimeout(function(){
-        //navigator.geolocation.getCurrentPosition(success, error, options);
+        navigator.geolocation.getCurrentPosition(success, error, options);
         
         //TEST
-        coords.push(`[${Math.random()}, ${Math.random()}]`)
-        console.log(url, coords[coords.length-1])
+        //coords.push(`[${Math.random()}, ${Math.random()}]`)
+        //console.log(url, coords[coords.length-1])
         
         document.getElementById("textarea").value = coords
         postToApi(url, coords[coords.length-1])
