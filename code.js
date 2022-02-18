@@ -32,7 +32,7 @@ function getCoords(url) {
         //navigator.geolocation.getCurrentPosition(success, error, options);
         
         //TEST
-        coords.push([Math.random(), Math.random()])
+        coords.push(`[${Math.random()}, ${Math.random()}]`)
         console.log(url, coords[coords.length-1])
         
         document.getElementById("textarea").value = coords
