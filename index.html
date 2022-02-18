@@ -3,63 +3,22 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <textarea id="textarea" rows="30" cols="80"></textarea><br>
+    <center>
+      <h3>Live tracker</h3>
+    </center>
+    <h5>Api configuration (optional)</h5>
+    <form>
+      <a>API Url </a><input type="text" id="apiurl"/>
+      <br/><br/>
+      <input type="submit" value="Test endpoint" onclick="alert('...')">
+      <input type="button" value="Endpoint body" onclick="alert('...')">
+    </form>
+    <br/><br/>
+    <button onclick="getCoords(apiurl.value)">Start</button>
+    <button onclick="stopLiveTraking()">Stop</button>
     <button onclick="saveTextAsFile(textarea.value, 'coords.txt')">Download</button>
+    <br/><br/>
+    <textarea id="textarea" rows="40" cols="90"></textarea>
   </body>
-  <script>
-    var coords = []
-
-    var options = {
-      enableHighAccuracy: true,
-      timeout: 2000,
-      maximumAge: 0
-    };
-
-    function success(pos) {
-      var crd = [pos.coords.latitude, pos.coords.longitude]
-
-      if (
-          coords.length > 0 &&
-          coords[coords.length-1][0] == crd[0] &&
-          coords[coords.length-1][1] == crd[1]
-      ) return
-
-      coords.push(`[${crd}]`)
-    };
-
-    function error(err) {
-      console.warn('ERROR(' + err.code + '): ' + err.message);
-    };
-
-    function getCoords() {
-      setTimeout(function(){
-        navigator.geolocation.getCurrentPosition(success, error, options);
-        document.getElementById("textarea").value = coords
-        getCoords()
-      }, 2000)
-    }
-    getCoords()
-
-    function saveTextAsFile(textToWrite, fileNameToSaveAs) {
-        var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'}); 
-        var downloadLink = document.createElement("a");
-        downloadLink.download = fileNameToSaveAs;
-        downloadLink.innerHTML = "Download File";
-        if (window.webkitURL != null) {
-        // Chrome allows the link to be clicked
-        // without actually adding it to the DOM.
-        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-        }
-        else {
-        // Firefox requires the link to be added to the DOM
-        // before it can be clicked.
-        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-        downloadLink.onclick = destroyClickedElement;
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-        }
-        
-        downloadLink.click();
-    }
-  </script>
+  <script src="./code.js"></script>
 </html>
