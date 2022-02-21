@@ -43,7 +43,7 @@ function getCoords(url) {
         else
             stop = false
         
-    }, 2000)
+    }, parseInt(document.getElementById("refreshtime").value))
 }
 
 function postToApi(url, body) {
