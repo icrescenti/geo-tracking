@@ -36,7 +36,7 @@ function getCoords(url) {
         //console.log(url, coords[coords.length-1])
         
         document.getElementById("textarea").value = coords
-        postToApi(url, coords[coords.length-1])
+        postToApi(url, coords[coords.length-1][0] + "," + coords[coords.length-1][1])
         
         if (!stop)
             getCoords(url)
@@ -53,7 +53,7 @@ function postToApi(url, body) {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body)
+        body: body
     })
     .catch(err => console.log("Failed to post coordinates"))
 }
