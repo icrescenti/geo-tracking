@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+  <script>
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 2000,
+      maximumAge: 0
+    };
+
+    function success(pos) {
+        var crd = [pos.coords.latitude, pos.coords.longitude]
+        document.write(crd)
+    };
+
+    function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  </script>
+</html>
