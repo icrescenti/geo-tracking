@@ -31,12 +31,9 @@ function getCoords(url) {
     setTimeout(function(){
         navigator.geolocation.getCurrentPosition(success, error, options);
         
-        //TEST
-        //coords.push(`[${Math.random()}, ${Math.random()}]`)
-        //console.log(url, coords[coords.length-1])
-        
         document.getElementById("textarea").value = coords
-        postToApi(url, coords[coords.length-1][0] + "," + coords[coords.length-1][1])
+        if (url != undefined)
+            postToApi(url, coords[coords.length-1][0] + "," + coords[coords.length-1][1])
         
         if (!stop)
             getCoords(url)
