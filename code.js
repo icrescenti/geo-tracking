@@ -1,3 +1,5 @@
+//  chrome://flags/#unsafely-treat-insecure-origin-as-secure
+
 var coords = []
 var stop = false
 
@@ -33,7 +35,7 @@ function getCoords(url) {
         
         document.getElementById("textarea").value = coords
         if (url != undefined)
-            postToApi(url, coords[coords.length-1][0] + "," + coords[coords.length-1][1])
+            postToApi(url, coords[coords.length-1])
         
         if (!stop)
             getCoords(url)
@@ -46,6 +48,7 @@ function getCoords(url) {
 function postToApi(url, body) {
     return fetch(url, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
