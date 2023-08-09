@@ -45,7 +45,7 @@ function getCoords(url) {
     }, parseInt(document.getElementById("refreshtime").value))
 }
 
-function postToApi(url, body) {
+function postToApi(url, coords) {
     return fetch(url, {
         method: 'POST',
         mode: 'no-cors',
@@ -53,7 +53,10 @@ function postToApi(url, body) {
             Accept: 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify({
+		    "longitude": coords[1],
+		    "latatiude": coords[0]
+	    })
     })
     .catch(err => console.log("Failed to post coordinates"))
 }
