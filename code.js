@@ -45,8 +45,8 @@ function getCoords(url) {
     }, parseInt(document.getElementById("refreshtime").value))
 }
 
-function postToApi(url, coords) {
-	let _ coords = JSON.parse(coords);
+function postToApi(url, _body) {
+	let _ coords = JSON.parse(_body);
     return fetch(url, {
         method: 'POST',
         mode: 'no-cors',
