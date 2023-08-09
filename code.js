@@ -50,10 +50,6 @@ function postToApi(url, _body) {
     return fetch(url, {
         method: 'POST',
         mode: 'no-cors',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify({
 		    longitude: _coords[1],
 		    latatiude: _coords[0]
