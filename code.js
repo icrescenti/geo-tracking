@@ -46,7 +46,7 @@ function getCoords(url) {
 }
 
 function postToApi(url, _body) {
-	let _ coords = JSON.parse(_body);
+	let _coords = JSON.parse(_body);
     return fetch(url, {
         method: 'POST',
         mode: 'no-cors',
