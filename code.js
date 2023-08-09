@@ -55,8 +55,8 @@ function postToApi(url, _body) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-		    "longitude": _coords[1],
-		    "latatiude": _coords[0]
+		    longitude: _coords[1],
+		    latatiude: _coords[0]
 	    })
     })
     .catch(err => console.log("Failed to post coordinates"))
